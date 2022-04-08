@@ -10,6 +10,7 @@ public class Program {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
+		Conta conta;
 		
 		System.out.print("Enter account number: ");
 		int numeroConta = sc.nextInt();
@@ -17,18 +18,17 @@ public class Program {
 		System.out.print("Enter account holder: ");
 		String nomeTitular = sc.nextLine();		
 		System.out.print("Is there an initial deposit? (y/n)");
-		String option = sc.nextLine();
-		
-		double depositoInicial = 0.0;
+		String option = sc.next();		
 		
 		if(option.equals("y")) {
 			System.out.print("Enter inicial deposit value: ");
-			depositoInicial = sc.nextDouble();
+			double depositoInicial = sc.nextDouble();
+			conta = new Conta(numeroConta, nomeTitular, depositoInicial);
+		}else {
+			conta = new Conta(numeroConta, nomeTitular);
 		}
 		
 		System.out.print("\n");
-		
-		Conta conta = new Conta(numeroConta, nomeTitular, depositoInicial);
 		
 		System.out.println("Account data:\n" + conta.toString());
 		
